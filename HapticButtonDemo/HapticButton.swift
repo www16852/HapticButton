@@ -10,19 +10,22 @@ import UIKit
 /// 觸覺設計的button
 class HapticButton: UIButton {
     
-    var pressColor: UIColor? {nil}
-    var originColor: UIColor? {nil}
-    var textPressAlpha: CGFloat {0.4}
-    var textColor: UIColor {.white}
+    var pressColor: UIColor?
+    var originColor: UIColor?
+    var textPressAlpha: CGFloat = 0.4
+    var textColor: UIColor = .white
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        tintColor = textColor
-        backgroundColor = originColor
+        setupBtn()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        setupBtn()
+    }
+    
+    func setupBtn() {
         backgroundColor = originColor
         tintColor = textColor
     }
@@ -71,10 +74,10 @@ class HapticButton: UIButton {
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesCancelled(touches, with: event)
-//        self.backgroundColor = self.originColor
-//        self.titleLabel?.alpha = 1
-//        self.imageView?.alpha = 1
-//        self.transform = .identity
+        self.backgroundColor = self.originColor
+        self.titleLabel?.alpha = 1
+        self.imageView?.alpha = 1
+        self.transform = .identity
     }
     
 }
